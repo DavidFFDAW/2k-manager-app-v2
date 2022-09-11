@@ -8,15 +8,14 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './shared/modules/material.module';
-import { NavigationComponent } from './navigation/navigation.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
+    NotFoundComponent,
     AppComponent,
-    NavigationComponent,
-    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +28,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     }),
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

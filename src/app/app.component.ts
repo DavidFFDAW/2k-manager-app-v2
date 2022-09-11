@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { OnlineOfflineService } from './services/online.offline.service';
+import { NetworkService } from './services/network.service';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +9,8 @@ import { OnlineOfflineService } from './services/online.offline.service';
 
 export class AppComponent {
 
-  constructor(private networkService: OnlineOfflineService) { }
-  
+  constructor(private networkService: NetworkService) { }
+
   title = 'Online-Offline';
 
 }
