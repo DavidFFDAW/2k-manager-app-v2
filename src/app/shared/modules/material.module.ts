@@ -7,6 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
 
 export const MY_FORMATS = {
@@ -31,12 +33,13 @@ const modules = [
   MatListModule,
   MatGridListModule,
   MatCardModule,
-  MatMenuModule
+  MatMenuModule,
+  MatTableModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
     imports: modules,
-
     exports: modules,
   })
   export class MaterialModule {}
