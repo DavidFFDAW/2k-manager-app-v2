@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { Observable, Subject } from 'rxjs';
+import { AlertNotification } from './alert.notification.service';
 
 declare const window: Window;
 
 @Injectable({ providedIn: 'root' })
-export class OnlineOfflineService {
+export class NetworkService {
 
   private onlineOfflineSubject = new Subject<boolean>();
 
@@ -17,11 +17,13 @@ export class OnlineOfflineService {
     return this.onlineOfflineSubject.asObservable();
   }
 
-  constructor(private toast: ToastrService) { 
-    console.log('OnlineOfflineService.constructor');
+  constructor(private notification: AlertNotification) { 
+    console.log('NetworkService.constructor');
     
     window.addEventListener('online', () => this.updateOnlineStatus());
     window.addEventListener('offline', () => this.updateOnlineStatus());
+    
+    console.log('Current network status is: ', this.isOnline ? 'Online': 'Offline');
   }
 
   private getAlertMessageAndTitle(): { message: string, title: string } {
@@ -33,16 +35,10 @@ export class OnlineOfflineService {
 
   // ? Emit the current online/offline status to the subscribers
   private updateOnlineStatus(): void {
-    const callback = this.isOnline ? 'success' : 'error';
+    const type = this.isOnline ? AlertNotification.SUCCESS : AlertNotification.ERROR;
     const { message, title } = this.getAlertMessageAndTitle();
 
-    const options = {
-      timeOut: 2000,
-      progressBar: false,
-      closeButton: true
-    };
-
-    this.toast[callback](message, title, options);
+    this.notification.showAlertByType(type, title, message);
 
     this.onlineOfflineSubject.next(window.navigator.onLine);
   }

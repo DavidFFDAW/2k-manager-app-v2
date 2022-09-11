@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OnlineOfflineService } from './online.offline.service';
+import { NetworkService } from './network.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ export class ChampionService {
   private champions: Array<string> = [];
 
   constructor(
-    private readonly onlineOfflineService: OnlineOfflineService
+    private readonly networkService: NetworkService
   ) { 
     console.log('ChampionService.constructor');
-    this.registerToEvents(this.onlineOfflineService);
+    this.registerToEvents(this.networkService);
     
   }
 
@@ -28,9 +28,10 @@ export class ChampionService {
     this.champions = this.champions.filter(c => c !== champion);
   }
 
-  public registerToEvents(event: OnlineOfflineService): void {
+  public registerToEvents(event: NetworkService): void {
     event.connectionChanged.subscribe(isOnline => {
       if (isOnline) {
+        // means that connection has changed back to online
         console.log('Online');
         
       } else {
