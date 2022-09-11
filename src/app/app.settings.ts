@@ -2,15 +2,16 @@ import { environment } from 'src/environments/environment';
 
 export class AppSettings {
   public static readonly APP_NAME = 'FAK';
-  public static readonly APP_LOCALSTORAGE_TOKEN = 'FAK_Token';
+  public static readonly APP_LOCALSTORAGE_TOKEN = '__2k_token__';
   public static readonly APP_VERSION = '0.1.0';
-  public static readonly API_ENDPOINT = '';
+  public static readonly API_ENDPOINT = 'http://localhost:8262/api/v1/';
   public static readonly STATIC_ENDPOINT = AppSettings.API_ENDPOINT + 'static/';
 
   public static readonly API_ENDPOINT_APP = AppSettings.API_ENDPOINT + 'app/';
   public static readonly API_ENDPOINT_USER = AppSettings.API_ENDPOINT + 'user';
 
-  public static readonly API_ENDPOINT_AUTH = AppSettings.API_ENDPOINT + 'auth/';
+  public static readonly API_ENDPOINT_AUTH = AppSettings.API_ENDPOINT + 'login';
+  public static readonly API_ENDPOINT_REGISTER = AppSettings.API_ENDPOINT + 'register';
   public static readonly API_ENDPOINT_AUTH_LOCAL =
     AppSettings.API_ENDPOINT + 'auth/local/';
 
