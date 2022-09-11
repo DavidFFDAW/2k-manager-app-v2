@@ -4,7 +4,7 @@ export class AppSettings {
   public static readonly APP_NAME = 'FAK';
   public static readonly APP_LOCALSTORAGE_TOKEN = '__2k_token__';
   public static readonly APP_VERSION = '0.1.0';
-  public static readonly API_ENDPOINT = 'http://localhost:8262/api/v1/';
+  public static readonly API_ENDPOINT = 'http://vps-f87b433e.vps.ovh.net:8625/';
   public static readonly STATIC_ENDPOINT = AppSettings.API_ENDPOINT + 'static/';
 
   public static readonly API_ENDPOINT_APP = AppSettings.API_ENDPOINT + 'app/';
