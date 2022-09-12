@@ -20,9 +20,6 @@ jobs:
     
     - name: Build project and generate .dist folder
       run: npm run build
-    
-    - name: Check current status of the build
-      run: ls -a
    
     - name: Write file with private key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ../key.pem
@@ -32,9 +29,12 @@ jobs:
     
     - name: Check current directory content
       run: ls -a  
+    
+    - name: Check previous directory content
+      run: ls -a ../ 
 
     - name: Copying build to server
-      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/build"  
+      run: "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/build"  
 #    - name: Cloning the repository
 #      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app && git clone https://github.com/DavidFFDAW/2k-manager-app-v2.git tmp"
 #    - name: Removing .git
