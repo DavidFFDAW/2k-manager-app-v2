@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.tryLogin();
+    this.tryLogin();
   }
 
   public tryLogin(): void {
