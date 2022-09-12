@@ -10,30 +10,31 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
     - name: Install dependencies of the project
       run: npm ci
+    
     - name: Build project and generate .dist folder
       run: npm run build
+    
     - name: Check current status of the build
       run: ls -a
-    
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
+   
     - name: Write file with private key
       run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ../key.pem
+    
     - name: Change permissions to key.pem
       run: chmod 400 ../key.pem
+    
     - name: Check current directory content
-      run: ls -a
+      run: ls -a  
 
-#    - name: Removing /tmp directory if present
-#      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app/ && rm -rf *"
+    - name: Copying build to server
+      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/build"  
 #    - name: Cloning the repository
 #      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app && git clone https://github.com/DavidFFDAW/2k-manager-app-v2.git tmp"
 #    - name: Removing .git
