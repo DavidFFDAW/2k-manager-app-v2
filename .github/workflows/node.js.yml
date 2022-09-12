@@ -10,6 +10,16 @@ on:
     branches: [ "main" ]
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies of the project
+      run: npm ci
+    - name: Build project and generate .dist folder
+      run: npm run build
+    - name: Check current status of the build
+    
   deploy:
     runs-on: ubuntu-latest
     steps:
