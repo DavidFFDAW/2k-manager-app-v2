@@ -33,11 +33,11 @@ jobs:
     - name: Removing .git
       run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app/tmp/ && rm -rf .git"
     
-    - name: Building project
+    - name: Execute docker script
       run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app/tmp/ && sh docker.sh"
     
     - name: Removing tmp from server
-      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cp /var/www/html/champs_app/tmp/ && rm -rf tmp/"
+      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app/ && rm -rf ./tmp"
 
     # - name: Check ls on server to see if it works
     #   run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app && ls -a"
