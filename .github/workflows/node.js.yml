@@ -19,6 +19,7 @@ jobs:
     - name: Build project and generate .dist folder
       run: npm run build
     - name: Check current status of the build
+      run: ls -a
     
   deploy:
     runs-on: ubuntu-latest
