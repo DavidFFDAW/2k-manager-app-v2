@@ -28,15 +28,14 @@ jobs:
       run: chmod 400 ../key.pem
     
     - name: Check current directory content
-      run: ls -a  
-    
-    - name: Check previous directory content
-      run: ls -a ../ 
+      run: ls -a
 
-#    - name: Copying build to server
-#      run: "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/"  
     - name: Check ls on server to see if it works
-      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app ls -a"
+      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app && ls -a"
+      
+    - name: Copying build to server
+      run: "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/"  
+
 #    - name: Removing .git
 #      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "cd /var/www/html/champs_app/tmp/ && rm -rf .git"
 #    - name: Building project
