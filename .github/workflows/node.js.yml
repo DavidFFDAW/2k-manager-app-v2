@@ -31,7 +31,7 @@ jobs:
       run: ls -a
 
     - name: Removing all contents from server
-      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} " rm -r /var/www/html/champs_app/*"
+      run: ssh -o StrictHostKeyChecking=no -i ../key.pem root@${{ secrets.SSH_HOST }} "rm -rf /var/www/html/champs_app/*"
       
     - name: Copying build to server
       run: "scp -r -i ../key.pem ./dist root@${{ secrets.SSH_HOST }}:/var/www/html/champs_app/"
