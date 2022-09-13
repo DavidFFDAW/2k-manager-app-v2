@@ -1,10 +1,12 @@
 #stage 1
 FROM node:latest as node
 WORKDIR /app
+# Copy the dist external folder into /app directory
 COPY /dist ./dist
-# RUN npm i http-server -g
-# RUN http-server /app/dist/champions -p 80
-# RUN npm run build --prod
+# Rename the configuration file
+RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
+# Copy the nginx configuration file to the nginx folder
+COPY nginx.conf /etc/nginx/nginx.conf
 
 #stage 2
 FROM nginx:alpine
