@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertNotification } from 'src/app/services/alert.notification.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,31 +9,54 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
+  private form: FormGroup;
+  private mailValidators = [Validators.required, Validators.email, Validators.minLength(5)];
+  private passwordValidators = [Validators.required, Validators.minLength(8)];
+
   constructor(
     private auth: AuthService,
-    private notification: AlertNotification,
     private snackBar: MatSnackBar
-  ) { }
-
-  ngOnInit(): void {
-    this.tryLogin();
+  ) { 
+    this.form = new FormGroup({
+      email: new FormControl('', this.mailValidators),
+      password: new FormControl('', this.passwordValidators),
+    });
   }
 
-  public tryLogin(): void {
+  ngOnInit(): void {
+    // this.tryLogin();
+  }
+
+  public getForm(): FormGroup {
+    return this.form;
+  }
+
+  public isFormValid(): boolean {
+    return this.form.valid;
+  }
+
+  public validateAndTryLogin(): void {
+    if (this.isFormValid()) {
+      return this.tryLogin();
+    }
+    this.showSnackBar('Por favor, revise los datos ingresados');
+  }
+
+  private tryLogin(): void {
     this.auth.tryLogin({
-      email: '',
-      password: ''
+      email: this.form.get('email')?.value,
+      password: this.form.get('password')?.value,
     }).subscribe({
-      next: ({ api_token }) => {},
-      error: ({error}) => {
+      error: ({ error }) => {
+        window.navigator.vibrate(2000);
         this.showSnackBar(error.message);
       }
     });
   }
 
-  public showSnackBar( message: string): void {
+  private showSnackBar( message: string): void {
     this.snackBar.open(message, 'Aceptar', {
-      duration: 4000,
+      duration: 5000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });

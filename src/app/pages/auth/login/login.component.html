@@ -1,35 +1,28 @@
-<div class="auth-page">
-    <div class="auth-page__content-block">
-      <div class="auth-page__content-wrapper">
-        <mat-tab-group class="auth-page__group">
-          <mat-tab label="Login">
-            <h4 class="auth-page__group-title">Bienvenido</h4>
-    
-            <app-login-form ></app-login-form>
-  
-          </mat-tab>
-          <mat-tab [disabled]="true" label="New User">
-            <h4 class="auth-page__group-title">Welcome!</h4>
-            <p class="auth-page__group-sub-title">Create you account</p>
-  
-            <!-- <app-sign-form (sendSignForm)="sendSignForm()"></app-sign-form> -->
-  
-            <div class="auth-page__border-wrapper">
-              <div class="auth-page__border-line"></div>
-              <p class="auth-page__border-title">or</p>
-              <div class="auth-page__border-line"></div>
-            </div>
-  
-  
-          </mat-tab>
-        </mat-tab-group>
-  
-         </div>
-    </div>
-    <div class="auth-page__logo">
-      <div class="auth-page__logo-wrapper">
-        <img class="auth-page__logo-img" src="./assets/auth/logo.svg" alt="logo">
-        <h6 class="auth-page__logo-title">FAK</h6>
+<div class="auth-page flex center">
+  <!-- <app-login-form ></app-login-form> -->
+  <div class="login-form flex column spc-btw">
+    <img src="/assets/icons/icon-192x192.png" alt="">
+      
+    <form [formGroup]="getForm()" (ngSubmit)="validateAndTryLogin()">
+      <div class="flex center">
+        <mat-form-field>
+          <input type="email" matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
       </div>
+      <div class="flex center">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
+      </div>
+      
+      <div class="flex spc-btw">
+        <div></div>
+        <button [disabled]="!isFormValid()" type="submit" mat-raised-button color="primary">Login</button>
+      </div>
+    </form>
+
+    <div class="register-link">
+      <p>¿No tienes cuenta? <a routerLink="/register">Registrate</a></p>
     </div>
   </div>
+</div>
