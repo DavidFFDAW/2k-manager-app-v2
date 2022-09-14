@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   hmr: false,
+  API_ENDPOINT: 'http://vps-f87b433e.vps.ovh.net:8625/api/v1/',
 };
 
 /*
