@@ -5,24 +5,22 @@ import { LoginRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    LoginFormComponent
   ],
   imports: [
     LoginRoutingModule,
     SharedModule,
-    MatSnackBarModule,
-    MatTabsModule,
     MatButtonModule,
-    MatInputModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
+    FlexLayoutModule,
+    MatInputModule
   ]
 })
 export class LoginModule { }
