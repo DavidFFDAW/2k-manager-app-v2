@@ -21,7 +21,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { 
-    path: 'login',
+    path: 'auth',
     canActivate: [ NotTokenizedRouteGuard ],
     loadChildren: () => import('./pages/auth/auth.module').then(m => m.LoginModule), 
   },
