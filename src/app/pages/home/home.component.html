@@ -7,7 +7,7 @@
           <p>Esto hará que te dirijas a la página de login para la que requeriras tener una cuenta en la App de gestión y un token de acceso.</p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-button routerLink="/auth/login">IR AL LOGIN</button>
+          <a mat-button routerLink="/auth/login">IR AL LOGIN</a>
         </mat-card-actions>
     </mat-card>
 
@@ -23,5 +23,5 @@
         </mat-card-actions>
     </mat-card>
 
-    <button type="button" mat-raised-button color="primary" [disabled]="isSessionInitiated()" (click)="logout()"> Cerrar Sesión </a>
+    <button type="button" mat-raised-button color="primary" [disabled]="isSessionInitiated()" (click)="logout()"> Cerrar Sesión </button>
 </div>
