@@ -1,1 +1,24 @@
-<p>register works!</p>
+<div class="auth-page flex center">
+    <!-- <app-login-form ></app-login-form> -->
+    <div class="login-form flex column spc-btw">
+      <img src="/assets/icons/icon-192x192.png" alt="">
+        
+      <form [formGroup]="getForm()" (ngSubmit)="validateAndTryRegister()">
+        <div class="flex center">
+          <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+        </div>
+        <div class="flex center">
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </div>
+        
+        <div class="flex spc-btw">
+            <a routerLink="/auth/login" mat-button color="primary">Login</a>
+            <button [disabled]="!isFormValid()" type="submit" mat-raised-button color="primary">Registrarse</button>
+        </div>
+      </form>
+    </div>
+  </div>
