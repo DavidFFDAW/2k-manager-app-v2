@@ -14,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     SharedModule,
-    MaterialModule,,
+    MaterialModule,
     MatButtonModule,
     MatCardModule,
     HomeRoutingModule
