@@ -3,6 +3,8 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { HomeRoutingModule } from './home-routing.module';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 
 
@@ -12,7 +14,9 @@ import { HomeRoutingModule } from './home-routing.module';
   ],
   imports: [
     SharedModule,
-    MaterialModule,
+    MaterialModule,,
+    MatButtonModule,
+    MatCardModule,
     HomeRoutingModule
   ]
 })
