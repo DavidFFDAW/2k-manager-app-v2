@@ -7,19 +7,22 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public isUserLogged: boolean = false;
 
   constructor(
     private authService: AuthService
-  ) { }
+  ) { 
+    this.checkSession();
+    
+  }
 
-  ngOnInit(): void { console.log('HomeComponent redered'); }
+  ngOnInit(): void { }
 
-  public isSessionInitiated(): boolean {
-    return this.authService.isLoggedIn();
+  public checkSession(): void {
+    this.isUserLogged = this.authService.isLoggedIn();
   }
 
   public logout (): void {
-    console.log('Logging out of the app');    
     this.authService.logout();
   }
 

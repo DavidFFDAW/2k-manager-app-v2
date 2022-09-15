@@ -1,6 +1,8 @@
 <div class="home content">
-   <!--  <mat-card class="example-card" *ngIf="!isSessionInitiated()">
-        <mat-card-title>LOGIN</mat-card-title>
+  <div *ngIf="!isUserLogged">
+
+    <mat-card class="example-card">
+      <mat-card-title>LOGIN</mat-card-title>
         <mat-card-subtitle>Redirección</mat-card-subtitle>
         <mat-card-content>
           <p>Redirección a Login</p>
@@ -9,9 +11,9 @@
         <mat-card-actions>
           <a mat-button routerLink="/auth/login">IR AL LOGIN</a>
         </mat-card-actions>
-    </mat-card>
-
-    <mat-card class="example-card" *ngIf="!isSessionInitiated()">
+      </mat-card>
+      
+      <mat-card class="example-card">
         <mat-card-title>REGISTER</mat-card-title>
         <mat-card-subtitle>Redirección</mat-card-subtitle>
         <mat-card-content>
@@ -19,11 +21,13 @@
           <p>Esto hará que te dirijas a la página de registro para la que requeriras tener una cuenta en la App de gestión y solo se generará un token para dicha cuenta.</p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-button routerLink="/auth/register">IR AL LOGIN</a>
+          <a mat-button routerLink="/auth/register">IR AL REGISTRO</a>
         </mat-card-actions>
-    </mat-card> -->
-
-    <button type="button" mat-raised-button color="primary" [disabled]="isSessionInitiated()" (click)="logout()"> Cerrar Sesión </button>
-    <a type="button" mat-raised-button color="primary" [disabled]="!isSessionInitiated()" routerLink="/auth/login"> LOGIN </a>
-    <a type="button" mat-raised-button color="primary" [disabled]="!isSessionInitiated()" routerLink="/auth/register"> REGISTER </a>
+      </mat-card>
+    </div>
+    <div class="flex spc-btw button-grp">
+      <button type="button" mat-raised-button color="primary" [disabled]="!isUserLogged" (click)="logout()"> Cerrar Sesión </button>
+      <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/login"> LOGIN </a>
+      <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/register"> REGISTER </a>
+    </div>
 </div>

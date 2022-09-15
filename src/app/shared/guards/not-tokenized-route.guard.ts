@@ -15,8 +15,9 @@ export class NotTokenizedRouteGuard implements CanActivate {
   
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const token = localStorage.getItem(AppSettings.APP_LOCALSTORAGE_TOKEN);
+    console.log('Guard-not-token: ', token);
 
-    if (!token) {
+    if (token) {
       this.router.navigate([this.routers.HOME]);
     }
     return !token;
