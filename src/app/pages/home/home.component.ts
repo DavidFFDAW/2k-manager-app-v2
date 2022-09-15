@@ -12,13 +12,14 @@ export class HomeComponent implements OnInit {
     private authService: AuthService
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { console.log('HomeComponent redered'); }
 
   public isSessionInitiated(): boolean {
     return this.authService.isLoggedIn();
   }
 
   public logout (): void {
+    console.log('Logging out of the app');    
     this.authService.logout();
   }
 
