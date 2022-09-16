@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       password: this.form.get('password')?.value,
     }).subscribe({
       error: ({ error }) => {
-        window.navigator.vibrate(2000);
+        window.navigator.vibrate(200, 0, 200);
         this.showSnackBar(error.message);
       }
     });

@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
   private tryRegister(): void {
     this.auth.tryRegister(this.getRegisterData()).subscribe({
       error: ({ error }) => {
-        window.navigator.vibrate(2000);
+        window.navigator.vibrate(200, 0, 200);
         this.showSnackBar(error.message);
       }
     });
