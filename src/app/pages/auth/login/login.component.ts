@@ -47,6 +47,11 @@ export class LoginComponent implements OnInit {
       email: this.form.get('email')?.value,
       password: this.form.get('password')?.value,
     }).subscribe({
+      next: (resp) => {
+        this.showSnackBar('Bienvenido');
+        console.log(resp);
+        
+      },
       error: ({ error }) => {
         window.navigator.vibrate([ 200, 0, 200 ]);
         this.showSnackBar(error.message);

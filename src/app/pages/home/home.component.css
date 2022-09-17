@@ -1,7 +1,8 @@
 .home.content {
     width: 100%;
     margin: auto;
-    margin-top: 25%;
+    margin-top: 0;
+    margin-bottom: 150px;
     max-width: 400px;
 }
 .home.content .example-card {
@@ -10,4 +11,5 @@
 }
 .home.content .button-grp {
     margin-top: 50px;
+    padding-bottom: 150px;
 }

@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { SwiperModule } from 'swiper/angular';
 
 
 
@@ -19,7 +20,8 @@ import { MatCardModule } from '@angular/material/card';
     MaterialModule,
     MatButtonModule,
     MatCardModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    SwiperModule,
   ]
 })
 export class HomeModule { }
