@@ -3,5 +3,5 @@ export interface HttpResponse {
     type: string;
     message: string;
     data?: string;
-    api_token?: string | undefined;
+    token?: string | undefined;
 }
