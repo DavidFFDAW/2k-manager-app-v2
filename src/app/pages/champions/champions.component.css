@@ -1,0 +1,27 @@
+.home.content {
+    width: 100%;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 150px;
+    max-width: 400px;
+}
+.home.content .example-card {
+    margin: auto;
+    margin-top: 50px;
+}
+.home.content .button-grp {
+    margin-top: 50px;
+    padding-bottom: 150px;
+}
+.championship {
+    position: relative;
+    margin: auto;
+    height: 200px;
+    margin-top: 0;
+    right: -50%;
+    width: 200px;
+    margin-bottom: 150px;
+    max-width: 400px;
+    top: -100px;
+    transform: translate(-50%, 0);
+}

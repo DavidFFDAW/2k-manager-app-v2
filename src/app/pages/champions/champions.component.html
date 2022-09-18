@@ -1,1 +1,22 @@
-<p>champions works!</p>
+<div class="home content">
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let champion of currentChampions">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{ champion.championship_name }}</mat-card-title>
+                        <mat-card-subtitle>{{ champion.name }}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img mat-card-image [src]="champion.image" alt="Photo of {{champion.name}}">
+                    <img [src]="champion.ch_img" class="championship"/>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary">Ver {{champion.name}}</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
+    
