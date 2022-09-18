@@ -4,7 +4,6 @@ import { Observable, shareReplay, tap } from 'rxjs';
 import { Router } from '@angular/router';
 import { AppSettings } from '../app.settings';
 import { HttpResponse } from '../shared/interfaces/http.response.interface';
-import { AlertNotification } from './alert.notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,9 @@ export class AuthService {
     password: string,
   }): Observable<HttpResponse> {
     return this.http.post<HttpResponse>(AppSettings.API_ENDPOINT_AUTH, credentials).pipe(
-      tap(({ api_token }: HttpResponse) => {
-        if (api_token) localStorage.setItem(AppSettings.APP_LOCALSTORAGE_TOKEN, api_token)
+      tap(({ token }: HttpResponse) => {
+        console.log('Observable tryRegister', token);
+        if (token) localStorage.setItem(AppSettings.APP_LOCALSTORAGE_TOKEN, token)
         this.router.navigate(['/home']);
       }),
       shareReplay()
@@ -43,8 +43,10 @@ export class AuthService {
     passphrase: string,
   }): Observable<HttpResponse> {
     return this.http.post<HttpResponse>(AppSettings.API_ENDPOINT_REGISTER, credentials).pipe(
-      tap(({ api_token }: HttpResponse) => {
-        if (api_token) localStorage.setItem(AppSettings.APP_LOCALSTORAGE_TOKEN, api_token)
+      tap(({ token }: HttpResponse) => {
+        console.log('Observable tryRegister',token);
+        
+        if (token) localStorage.setItem(AppSettings.APP_LOCALSTORAGE_TOKEN, token)
       }),
       shareReplay()
     );

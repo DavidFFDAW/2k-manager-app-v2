@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { NetworkService } from './network.service';
+import { Observable } from 'rxjs';
+import { AppSettings } from '../app.settings';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +12,15 @@ export class ChampionService {
   private champions: Array<string> = [];
 
   constructor(
-    private readonly networkService: NetworkService
+    private readonly networkService: NetworkService,
+    private http: HttpClient
   ) { 
-    console.log('ChampionService.constructor');
     this.registerToEvents(this.networkService);
     
   }
 
-  public getChampions(): Array<string> {
-    return this.champions;
+  public getChampions(): Observable<any> {
+    return this.http.get(AppSettings.API_ENDPOINT_CHAMPIONS);
   }
 
   public addChampion(champion: string): void {
