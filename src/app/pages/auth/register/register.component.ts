@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AppSettings } from 'src/app/app.settings';
+import { SnackBarService } from 'src/app/services/snack.bar.service';
 import { v4 } from 'uuid';
 
 @Component({
@@ -17,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
       private auth: AuthService,
-      private snackBar: MatSnackBar
+      private snackBar: SnackBarService
   ) { 
     this.form = new FormGroup({
       email: new FormControl('', this.mailValidators),
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
     if (this.isFormValid()) {
       return this.tryRegister();
     }
-    this.showSnackBar('El email o la contraseña no son válidos');
+    this.snackBar.showSnackBar('El email o la contraseña no son válidos');
   }
 
   private generatePassphrase(): string {
@@ -59,17 +60,9 @@ export class RegisterComponent implements OnInit {
   private tryRegister(): void {
     this.auth.tryRegister(this.getRegisterData()).subscribe({
       error: ({ error }) => {
-        window.navigator.vibrate([ 200, 0, 200 ]);
-        this.showSnackBar(error.message);
+        window.navigator.vibrate(AppSettings.VIBRATION_DEFAULT_PATTERN);
+        this.snackBar.showSnackBar(error.message);
       }
-    });
-  }
-
-  private showSnackBar( message: string): void {
-    this.snackBar.open(message, 'Aceptar', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
     });
   }
 }

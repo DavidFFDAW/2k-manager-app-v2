@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SnackBarService } from 'src/app/services/snack.bar.service';
+import { AppSettings } from 'src/app/app.settings';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private auth: AuthService,
-    private snackBar: MatSnackBar
+    private snackBar: SnackBarService
   ) { 
     this.form = new FormGroup({
       email: new FormControl('', this.mailValidators),
@@ -23,9 +24,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    // this.tryLogin();
-  }
+  ngOnInit(): void { }
 
   public getForm(): FormGroup {
     return this.form;
@@ -39,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (this.isFormValid()) {
       return this.tryLogin();
     }
-    this.showSnackBar('Por favor, revise los datos ingresados');
+    this.snackBar.showSnackBar('Por favor, revise los datos ingresados');
   }
 
   private tryLogin(): void {
@@ -48,23 +47,12 @@ export class LoginComponent implements OnInit {
       password: this.form.get('password')?.value,
     }).subscribe({
       next: (resp) => {
-        this.showSnackBar('Bienvenido');
-        console.log(resp);
-        
+        this.snackBar.showSnackBar('Bienvenido');
       },
       error: ({ error }) => {
-        window.navigator.vibrate([ 200, 0, 200 ]);
-        this.showSnackBar(error.message);
+        window.navigator.vibrate(AppSettings.VIBRATION_DEFAULT_PATTERN);
+        this.snackBar.showSnackBar(error.message);
       }
     });
   }
-
-  private showSnackBar( message: string): void {
-    this.snackBar.open(message, 'Aceptar', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-    });
-  }
-
 }
