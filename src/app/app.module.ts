@@ -9,14 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './shared/modules/material.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { TokenInterceptorService } from './shared/interceptors/http.interceptor';
+import { SliderComponent } from './shared/components/slider/slider.component';
 
 @NgModule({
   declarations: [
     NotFoundComponent,
     AppComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
