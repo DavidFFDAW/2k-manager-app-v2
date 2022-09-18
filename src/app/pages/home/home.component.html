@@ -1,24 +1,4 @@
 <div class="home content">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let slide of slides">
-          <mat-card class="example-card">
-            <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>{{slide.name}}</mat-card-title>
-            </mat-card-header>
-            <img mat-card-image [src]="slide.src" alt="Photo of a Shiba Inu">
-            <mat-card-actions>
-              <button mat-raised-button color="primary">Ver {{slide.name}}</button>
-            </mat-card-actions>
-          </mat-card>
-      </div>
-    </div>
-  </div>
-
-
-
-
   <div *ngIf="!isUserLogged">
     <mat-card class="example-card">
       <mat-card-title>LOGIN</mat-card-title>
@@ -49,4 +29,5 @@
       <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/login"> LOGIN </a>
       <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/register"> REGISTER </a>
     </div>
+    <a type="button" mat-raised-button color="primary" [disabled]="!isUserLogged" routerLink="/champions"> VER CAMPEONES </a>
 </div>
