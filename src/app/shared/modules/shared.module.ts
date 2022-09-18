@@ -12,6 +12,9 @@ import { MaterialModule } from './material.module';
     ToastrModule.forRoot()
   ],
   exports: [
+    CommonModule,
+    MaterialModule,
+    ToastrModule
   ]
 })
 export class SharedModule { }
