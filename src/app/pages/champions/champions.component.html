@@ -1,5 +1,5 @@
 <div class="home content">
-
+    <button mat-button (click)="modifySwiper()">{{ isInterval ? 'Pause' : 'Start' }} slider</button>
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide" *ngFor="let champion of currentChampions">
@@ -10,8 +10,10 @@
                         <mat-card-subtitle>{{ champion.name }}</mat-card-subtitle>
                     </mat-card-header>
                     <img mat-card-image [src]="champion.image" alt="Photo of {{champion.name}}">
-                    <img [src]="champion.ch_img" class="championship"/>
+                    <!-- <img [src]="champion.ch_img" class="championship"/> -->
                     <mat-card-actions>
+                        <!-- <p style="margin: 0 8px" >ID de reinado actual: {{champion.reign_id}}</p> -->
+                        <p style="margin: 0 8px 10px 8px" >Dias de reinado actual: {{champion.reign_days}}</p>
                         <button mat-raised-button color="primary">Ver {{champion.name}}</button>
                     </mat-card-actions>
                 </mat-card>

@@ -11,7 +11,9 @@ import { CurrentChampions } from 'src/app/shared/interfaces/common.interfaces';
 })
 export class ChampionsComponent implements OnInit, AfterViewInit {
 
+  public isInterval: boolean = false;
   public currentChampions: CurrentChampions[] = [];
+  private interval: any;
   private swiper: any;
   
   constructor(
@@ -30,6 +32,12 @@ export class ChampionsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  setUpInterval() {
+    this.isInterval = true;
+    this.interval = setInterval(() => {
+      this.swiper.slideNext();
+    }, 4000);
+  }
 
   ngAfterViewInit(): void {    
     this.swiper = new Swiper('.swiper', {
@@ -39,10 +47,16 @@ export class ChampionsComponent implements OnInit, AfterViewInit {
       spaceBetween: 30,
       centeredSlides: true,      
     });
+    this.setUpInterval();
+  }
 
-    setInterval(() => {
-      this.swiper.slideNext();
-    }, 4000);
+  modifySwiper() {
+    if (this.isInterval) {
+      clearInterval(this.interval);
+      this.isInterval = false;
+    } else {
+      this.setUpInterval();
+    }
   }
 
 }
