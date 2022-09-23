@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a *ngFor="let route of sidenavRoutes" 
+        mat-list-item [routerLink]="route.link" 
+        (click)="drawer.toggle()"
+      >
+        <mat-icon>{{ route.icon }}</mat-icon>&nbsp;
+        {{ route.name }}
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="flex spc-btw">
+      <div>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Champions</span>
+      </div>
+      <div>
+        <button
+          type="button"
+          aria-label="Change theme color"
+          mat-icon-button
+          (click)="changeTheme()">
+          <mat-icon aria-label="Side nav toggle icon">{{ themeIcon }}</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar>
+    
+    <div class="sv-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
