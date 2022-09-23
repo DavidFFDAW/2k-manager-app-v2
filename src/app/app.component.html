@@ -1,1 +1,2 @@
-<router-outlet></router-outlet>
+<app-sidenav *ngIf="isAuthenticated" [dark]="hasDarkTheme()"></app-sidenav>
+<router-outlet *ngIf="!isAuthenticated"></router-outlet>

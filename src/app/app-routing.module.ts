@@ -15,6 +15,11 @@ const routes: Routes = [
     canActivate: [ AuthGuard ],
     loadChildren: () => import('./pages/champions/champions.module').then(m => m.ChampionsModule), 
   },
+  { 
+    path: 'teams',
+    canActivate: [ AuthGuard ],
+    loadChildren: () => import('./pages/teams/teams.module').then(m => m.TeamsModule),
+  },
   {
     path: '404',
     component: NotFoundComponent,

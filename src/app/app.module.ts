@@ -14,12 +14,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TokenInterceptorService } from './shared/interceptors/http.interceptor';
 import { SliderComponent } from './shared/components/slider/slider.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     NotFoundComponent,
     AppComponent,
     SliderComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +43,12 @@ import { SliderComponent } from './shared/components/slider/slider.component';
     HttpClientModule,
     MatSnackBarModule,
     ToastrModule.forRoot(),
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
