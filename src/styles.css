@@ -4,6 +4,30 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'swiper/swiper.scss';
 
+/* VARIABLES */
+:root {
+    --toolbar-bg: #3f51b5;
+    --light-background: #3f51b5;
+    --app-background: #f0f0f0;
+    --error-page-color: #3f51b5;
+    --text-alt-color: #3f51b5;
+    --text-color: #2c2c2c;
+}
+body.dark-theme {
+    --toolbar-bg: #3f51b5;
+    --light-background: #3f51b5;
+    --app-background: #282a36;
+    --error-page-color: #fafafa;
+    --text-color: #fff;
+    background: var(--app-background);
+}
+body.dark-theme .mat-drawer-content {
+    background: var(--app-background);
+    color: var(--text-color);
+}
+
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
