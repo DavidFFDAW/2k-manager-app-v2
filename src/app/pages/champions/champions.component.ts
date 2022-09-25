@@ -11,7 +11,7 @@ import { CurrentChampions } from 'src/app/shared/interfaces/common.interfaces';
 })
 export class ChampionsComponent implements OnInit, AfterViewInit {
 
-  public isInterval: boolean = false;
+  public isInterval: boolean = true;
   public currentChampions: CurrentChampions[] = [];
   private interval: any;
   private swiper: any;
@@ -24,6 +24,8 @@ export class ChampionsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.championsService.getChampions().subscribe({
       next: (resp) => {        
+        console.log(resp);
+        
         this.currentChampions = resp.data;
       },
       error: (err) => {
@@ -32,9 +34,16 @@ export class ChampionsComponent implements OnInit, AfterViewInit {
     });
   }
 
+  isLastSlide() {
+    return this.swiper.isEnd;
+  }
+
   setUpInterval() {
     this.isInterval = true;
     this.interval = setInterval(() => {
+      if (this.isLastSlide()) {
+        clearInterval(this.interval);
+      }
       this.swiper.slideNext();
     }, 4000);
   }
@@ -48,6 +57,14 @@ export class ChampionsComponent implements OnInit, AfterViewInit {
       centeredSlides: true,      
     });
     this.setUpInterval();
+  }
+
+  nextSlide() {
+    this.swiper.slideNext();
+  }
+
+  lastSlide() {
+    this.swiper.slideTo(this.swiper.slides.length - 1);
   }
 
   modifySwiper() {

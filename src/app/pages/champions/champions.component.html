@@ -1,16 +1,34 @@
 <div class="home content">
-    <button mat-button (click)="modifySwiper()">{{ isInterval ? 'Pause' : 'Start' }} slider</button>
+    <div class="flex spc-btw">
+        <button mat-button (click)="modifySwiper()">{{ isInterval ? 'Pause' : 'Start' }} slider</button>
+        <button mat-button (click)="nextSlide()">Next slide</button>
+        <button mat-button (click)="lastSlide()">Last slide</button>
+    </div>
+
     <div class="swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide" *ngFor="let champion of currentChampions">
-                <mat-card class="example-card">
+                <mat-card class="example-card" *ngIf="!champion.is_tag">
                     <mat-card-header>
-                        <div mat-card-avatar class="example-header-image"></div>
+                        <div mat-card-avatar class="example-header-image"><mat-icon>military_tech</mat-icon></div>
                         <mat-card-title>{{ champion.championship_name }}</mat-card-title>
                         <mat-card-subtitle>{{ champion.name }}</mat-card-subtitle>
                     </mat-card-header>
-                    <img mat-card-image [src]="champion.image" alt="Photo of {{champion.name}}">
-                    <!-- <img [src]="champion.ch_img" class="championship"/> -->
+
+                    <div *ngIf="champion.is_tag" class="tag-team-slide">
+                        <img *ngFor="let single of champion.wrestlers; let i = index" 
+                            [src]="single.image" 
+                            alt="Photo of {{ single.name }}" 
+                            [attr.data-indx]="i+1"
+                            class="tag-team-image"
+                            [ngStyle]="{ 'left.px': (i + 1) * (i === 0 ? -100 : 15) }">
+                    </div>
+
+                    <div *ngIf="!champion.is_tag">
+                        <img mat-card-image [src]="champion.image" alt="Photo of {{ champion.name }}">
+                    </div>
+                    <img [src]="champion.ch_img" class="championship"/>
+                    
                     <mat-card-actions>
                         <!-- <p style="margin: 0 8px" >ID de reinado actual: {{champion.reign_id}}</p> -->
                         <p style="margin: 0 8px 10px 8px" >Dias de reinado actual: {{champion.reign_days}}</p>
