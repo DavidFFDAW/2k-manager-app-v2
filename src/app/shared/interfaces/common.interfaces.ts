@@ -15,3 +15,16 @@ export interface CurrentChampions {
         image: string;
     }]
 }
+
+export interface TeamInterface {
+    id: number;
+    name: string;
+    overall: number;
+    created_at: string;
+    updated_at: string;
+    members?: [{
+        id: number;
+        name: string;
+        sex: string;
+    }]
+}
