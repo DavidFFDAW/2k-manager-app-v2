@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Borrar Equipo</h1>
+<div mat-dialog-content>
+  ¿Realmente desea borrar {{ data.name }} ?
+</div>
+<div mat-dialog-actions class="flex spc-btw">
+    <button mat-button mat-dialog-close>Cerrar</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="data.id" cdkFocusInitial>Borrar</button>
+</div>
