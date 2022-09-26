@@ -1,0 +1,26 @@
+table.mat-table { width: 100%; }
+table.mat-table .average td,
+table.mat-table .average th { 
+    text-align: end; 
+}
+table.mat-table {
+    background: #44475a;
+    color: white;
+}
+table.mat-table th,
+table.mat-table td {
+    color: white;
+}
+body.dark-theme table.mat-table {
+    background: var(--app--background) !important;
+}
+.mat-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+button.mat-menu-item.warn,
+button.mat-menu-item.warn mat-icon {
+    color: red;
+}

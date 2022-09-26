@@ -1,1 +1,55 @@
-<p>teams works!</p>
+<div class="home content">
+
+    <div class="flex spc-btw">
+        <p>Cantidad de equipos: {{ teams.length }}</p>
+
+        <button routerLink="/teams/create/new" mat-fab color="primary"><mat-icon>add_circle</mat-icon></button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="average" class="average">
+          <th mat-header-cell *matHeaderCellDef> Average </th>
+          <td mat-cell *matCellDef="let element"> {{element.average}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/team/{{ element.id }}/update">
+                  <mat-icon>edit</mat-icon>
+                  <span>Editar {{ element.name }}</span>
+                </button>
+                <button mat-menu-item class="warn" (click)="askIfSureOfDeletion(element.id, element.name)">
+                  <mat-icon>delete</mat-icon>
+                  <span>Borrar {{ element.name }}</span>
+                </button>
+              </mat-menu>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>
