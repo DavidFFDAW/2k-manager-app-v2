@@ -9,6 +9,7 @@ export class AppSettings {
   public static readonly API_ENDPOINT_AUTH = AppSettings.API_ENDPOINT + 'login';
   public static readonly API_ENDPOINT_REGISTER = AppSettings.API_ENDPOINT + 'register';
   public static readonly API_ENDPOINT_CHAMPIONS = AppSettings.API_ENDPOINT + 'champions/get/reigns';
+  public static readonly API_ENDPOINT_TEAMS = AppSettings.API_ENDPOINT + 'teams/names';
 
   public static readonly APP_DEFAULT_MOMENT_LOCALE = 'es';
 
