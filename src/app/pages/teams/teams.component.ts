@@ -4,7 +4,7 @@ import { TeamsService } from 'src/app/services/teams.service';
 import { TeamInterface } from 'src/app/shared/interfaces/common.interfaces';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogTeamsComponent } from './components/dialog.component';
+import { DialogTeamsComponent } from './components/dialog/dialog.component';
 
 @Component({
   selector: 'app-teams',

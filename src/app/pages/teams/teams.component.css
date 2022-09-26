@@ -3,12 +3,12 @@ table.mat-table .average td,
 table.mat-table .average th { 
     text-align: end; 
 }
-table.mat-table {
+body.dark-theme table.mat-table {
     background: #44475a;
     color: white;
 }
-table.mat-table th,
-table.mat-table td {
+body.dark-theme table.mat-table th,
+body.dark-theme table.mat-table td {
     color: white;
 }
 body.dark-theme table.mat-table {
