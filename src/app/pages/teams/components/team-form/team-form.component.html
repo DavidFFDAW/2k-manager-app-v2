@@ -1,3 +1,46 @@
 <div>
-    
+    <div class="auth-page flex center">
+        <!-- <app-login-form ></app-login-form> -->
+        <div class="login-form flex column spc-btw">
+            
+          <form [formGroup]="getForm()" (ngSubmit)="validateAndTryLogin()">
+            <div >
+              <mat-form-field>
+                <input type="team_namw" matInput placeholder="Nombre de equipo" formControlName="name">
+              </mat-form-field>
+            </div>
+            <div >
+              <mat-form-field>
+                <input type="average" matInput placeholder="Media de equipo" formControlName="average">
+              </mat-form-field>
+            </div>
+
+            <div>
+                <h4>Miembros viriles:</h4>
+                <div>
+                    <div class="custom-wrapper-example" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+                        <input
+                          matInput
+                          [formControl]="member"
+                          [matAutocomplete]="auto"
+                          [matAutocompleteConnectedTo]="origin">
+                      </div>
+                      
+                      <mat-autocomplete #auto="matAutocomplete">
+                        <mat-option *ngFor="let wrestler of originalWrestlers" [value]="wrestler.id">{{ wrestler.name }}</mat-option>
+                      </mat-autocomplete>
+                </div>
+            </div>
+            
+            <div class="flex center">
+              <button type="submit" mat-stroked-button color="primary">Nuevo Miembro</button>
+            </div>
+
+            <div class="flex center">
+              <button [disabled]="!isFormValid()" type="submit" mat-raised-button color="primary">Crear Equipo</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
 </div>

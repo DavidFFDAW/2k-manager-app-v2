@@ -10,6 +10,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgModule } from '@angular/core';
 
 const modules = [
@@ -25,7 +26,8 @@ const modules = [
   MatMenuModule,
   MatTableModule,
   MatProgressSpinnerModule,
-  MatDialogModule
+  MatDialogModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

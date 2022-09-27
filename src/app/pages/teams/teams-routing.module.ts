@@ -9,7 +9,7 @@ const routes: Routes = [
     component: TeamsComponent,
   },
   {
-    path: '/team/update',
+    path: '/teams/create/new',
     component: TeamFormComponent,
   }
   

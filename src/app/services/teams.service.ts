@@ -9,8 +9,6 @@ import { AppSettings } from '../app.settings';
 })
 export class TeamsService {
 
-  private teams: Array<string> = [];
-
   constructor(
     private readonly networkService: NetworkService,
     private http: HttpClient
@@ -24,6 +22,16 @@ export class TeamsService {
   }
 
 
+  public createTeam(data: any): Observable<any> {
+    return this.http.post(AppSettings.API_ENDPOINT_TEAMS, data);
+  }
+
+
+  public remove(id: number): Observable<any> {
+    return this.http.delete(`${ AppSettings.API_ENDPOINT_TEAMS }?id=${ id }`);
+  }
+
+  // Prepared to sync with the server when connection has been lost
   public registerToEvents(event: NetworkService): void {
     event.connectionChanged.subscribe(isOnline => {
       if (isOnline) {

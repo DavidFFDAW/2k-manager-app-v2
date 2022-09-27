@@ -36,8 +36,16 @@ export class TeamsComponent implements OnInit {
   }
 
   deleteTeamById(id: number) {
-    this.teams = this.teams.filter(team => team.id !== id);
-    this.dataSource = new MatTableDataSource(this.teams); 
+    const localRemovedList = this.teams.filter(team => team.id !== id);
+    this.dataSource = new MatTableDataSource(localRemovedList);
+
+    this.teamService.remove(id).subscribe(
+      (response: any) => {
+        if (response.code !== 200) {
+          this.dataSource = new MatTableDataSource(this.teams);
+        }
+      }
+    );
   }
 
   askIfSureOfDeletion(id: number, name: string): void {

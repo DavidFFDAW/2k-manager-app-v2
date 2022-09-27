@@ -28,3 +28,11 @@ export interface TeamInterface {
         sex: string;
     }]
 }
+
+export interface WrestlerInterface {
+    id: number;
+    name: string;
+    sex: string;
+    overall: number;
+    image_name: string;
+}
