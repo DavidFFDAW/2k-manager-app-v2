@@ -37,7 +37,7 @@ export class TeamFormComponent implements OnInit {
 
     ngOnInit () {
         this.wrestlerService.findAll().subscribe({
-            next: (response: WrestlerInterface[]) => {
+            next: (response: any) => {
                 console.log(response);
                 this.originalWrestlers = response.data;
             },
