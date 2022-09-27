@@ -4,6 +4,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     ReactiveFormsModule,
     FlexLayoutModule,
+    MatFormFieldModule,
     CommonModule,
     ToastrModule.forRoot()
   ],
@@ -19,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MaterialModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    MatFormFieldModule,
     ToastrModule
   ]
 })

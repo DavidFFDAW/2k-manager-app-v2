@@ -14,8 +14,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TeamFormComponent
   ],
   imports: [
-    ReactiveFormsModule,
-    FlexLayoutModule,
     SharedModule,
     TeamsRoutingModule
   ],

@@ -18,6 +18,7 @@ export class TeamFormComponent implements OnInit {
 
     private teamForm: FormGroup;
     private nameValidator = [ Validators.required, Validators.minLength(3) ];
+    
     public originalWrestlers: WrestlerInterface[] = [];
     private members: { id: number; name: string; sex: string; }[] = [];
 
@@ -30,7 +31,7 @@ export class TeamFormComponent implements OnInit {
     ) {
         this.teamForm = new FormGroup({
             name: new FormControl('', this.nameValidator),
-            average: new FormControl('', this.passwordValidators),
+            average: new FormControl(''),
             member: new FormControl(''),
           });
     }
@@ -53,7 +54,7 @@ export class TeamFormComponent implements OnInit {
     }
 
     isFormValid() {
-        return this.teamForm.valid();
+        return this.teamForm.valid;
     }
 
     validateAndTryLogin() {
@@ -64,7 +65,7 @@ export class TeamFormComponent implements OnInit {
             members: this.members,
         };
 
-        this.teamsService.createTeam(datas).subscribe(
+        this.teamService.createTeam(datas).subscribe(
             (resp: any) => {
                 this.router.navigate([this.routers.TEAMS]);
             }
