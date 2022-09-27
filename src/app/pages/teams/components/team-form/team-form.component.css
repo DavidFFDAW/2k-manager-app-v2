@@ -1,0 +1,11 @@
+mat-form-field {
+    width: 100%;
+}
+
+.example-form-field {
+    /* background-color: aqua; */
+}
+.mat-form-field-appearance-fill .mat-form-field-flex  {
+    /* background-color: aqua; */
+    background: rebeccapurple;
+}

@@ -14,26 +14,30 @@ import { Router } from '@angular/router';
     styleUrls: ["./team-form.component.css"]
 })
 export class TeamFormComponent implements OnInit {
+    title = "Crear Equipo";
     public routers: typeof routes = routes;
 
-    private teamForm: FormGroup;
-    private nameValidator = [ Validators.required, Validators.minLength(3) ];
+    public teamForm: FormGroup;
+    private nameValidator = [ Validators.required, Validators.minLength(2) ];
     
     public originalWrestlers: WrestlerInterface[] = [];
     private members: { id: number; name: string; sex: string; }[] = [];
 
     constructor(
-        private fb: FormControl,
         private wrestlerService: WrestlerService,    
         private teamService: TeamsService,
         private snackBar: SnackBarService,        
         private router: Router,
     ) {
+        document.title = this.title ? this.title : document.title;
         this.teamForm = new FormGroup({
             name: new FormControl('', this.nameValidator),
             average: new FormControl(''),
             member: new FormControl(''),
-          });
+        });
+        console.log(this.teamForm);
+        console.log(this.teamForm.value);
+        
     }
 
     ngOnInit () {
