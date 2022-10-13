@@ -47,3 +47,35 @@ mat-card-title, mat-card-subtitle {
     width: 375px;
     height: 375px;
 }
+
+table.mat-table { width: 100%; }
+table.mat-table .average td,
+table.mat-table .average th { 
+    text-align: end; 
+}
+body.dark-theme table.mat-table {
+    background: #44475a;
+    color: white;
+}
+body.dark-theme table.mat-table th,
+body.dark-theme table.mat-table td {
+    color: white;
+}
+body.dark-theme table.mat-table {
+    background: var(--app--background) !important;
+}
+.mat-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+button.mat-menu-item.warn,
+button.mat-menu-item.warn mat-icon {
+    color: red;
+}
+
+table .championship-img {
+    width: 60px;
+    height: 60px;
+}

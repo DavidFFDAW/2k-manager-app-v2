@@ -1,0 +1,43 @@
+<div class="home content">
+
+    <div class="flex spc-btw">
+        <p>Cantidad de reinados actuales: {{ championshipReigns.length }}</p>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+      
+        <!-- Position Column -->
+        <ng-container matColumnDef="img">
+          <th mat-header-cell *matHeaderCellDef> IMAGE </th>
+          <td mat-cell *matCellDef="let element"><img class="championship-img" [src]="element.ch_img" [alt]="element.championship_name"> </td>
+        </ng-container>
+            
+        <!-- Weight Column -->
+        <ng-container matColumnDef="reigns">
+            <th mat-header-cell *matHeaderCellDef> REIGNS </th>
+            <td mat-cell *matCellDef="let element"> {{ element.num_reigns || 1 }} </td>
+        </ng-container>
+
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> NAME </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="days">
+          <th mat-header-cell *matHeaderCellDef> DAYS </th>
+          <td mat-cell *matCellDef="let element"> {{element.reign_days }} </td>
+        </ng-container>
+
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+</div>

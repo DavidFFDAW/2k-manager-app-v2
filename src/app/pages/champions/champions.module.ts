@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '../../shared/modules/shared.module';
-import { ChampionsComponent } from './champions.component';
+import { ChampionsTableComponent } from './champions.table.component';
 import { ChampionsRoutingModule } from './champion-routing.module';
 
 
 @NgModule({
   declarations: [
-    ChampionsComponent
+    ChampionsTableComponent
   ],
   imports: [
     MatCardModule,

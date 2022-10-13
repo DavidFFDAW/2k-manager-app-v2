@@ -7,6 +7,7 @@ import { CurrentChampions } from 'src/app/shared/interfaces/common.interfaces';
 @Component({
   selector: 'app-champions',
   templateUrl: './champions.component.html',
+  // templateUrl: './champions.table.component.html',
   styleUrls: ['./champions.component.css']
 })
 export class ChampionsComponent implements OnInit, AfterViewInit {
