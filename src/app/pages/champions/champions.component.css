@@ -79,3 +79,9 @@ table .championship-img {
     width: 60px;
     height: 60px;
 }
+
+button.mat-menu-item.success,
+button.mat-menu-item.success mat-icon {
+    color: rgb(84, 131, 84);
+    background-color: rgb(221, 239, 221);
+}

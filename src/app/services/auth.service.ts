@@ -22,6 +22,7 @@ export class AuthService {
     return this.http.post<HttpResponse>(AppSettings.API_ENDPOINT_AUTH, credentials).pipe(
       tap(({ token }: HttpResponse) => {
         console.log('Observable tryRegister', token);
+        console.log('Observabl', credentials);
         if (token) localStorage.setItem(AppSettings.APP_LOCALSTORAGE_TOKEN, token)
         this.router.navigate(['/home']);
       }),

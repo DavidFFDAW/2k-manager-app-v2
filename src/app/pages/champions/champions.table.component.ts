@@ -11,10 +11,11 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./champions.component.css']
 })
 export class ChampionsTableComponent implements OnInit {
-  displayedColumns: string[] = [ 'img', 'name', 'reigns', 'days' ];
+  displayedColumns: string[] = [ 'img', 'name', 'reigns', 'days', 'cta' ];
   
   public championshipReigns: CurrentChampions[] = [];
-  public dataSource: MatTableDataSource<CurrentChampions> = new MatTableDataSource();
+  public singlesChampions: MatTableDataSource<CurrentChampions> = new MatTableDataSource();
+  public tagTeamChampions: MatTableDataSource<CurrentChampions> = new MatTableDataSource();
   
   constructor(
     private championsService: ChampionService,
@@ -26,11 +27,9 @@ export class ChampionsTableComponent implements OnInit {
       next: (resp) => {        
         console.log(resp);
         
-        this.championshipReigns = resp.data;
-        this.dataSource = resp.data;
-
-        console.log(this.dataSource);
-        
+        this.championshipReigns = [ ...resp.reigns.currentSingles, ...resp.reigns.currentTagTeams ];
+        this.singlesChampions = resp.reigns.currentSingles;
+        this.tagTeamChampions = resp.reigns.currentTagTeams;        
       },
       error: (err) => {
         this.snackBar.showSnackBar('Ha ocurrido un error: ' + err.message);

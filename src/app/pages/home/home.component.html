@@ -24,10 +24,24 @@
         </mat-card-actions>
       </mat-card>
     </div>
-    <div class="flex spc-btw button-grp">
+
+    <div class="box-container">
+
+      <div class="box" routerLink="/champions">
+        <div class="flex center"><mat-icon class="icon">military_tech</mat-icon></div>
+        <div class="flex center"><span>Campeones</span></div>
+      </div>
+
+      <div class="box" routerLink="/teams">
+        <div class="flex center"><mat-icon class="icon">groups</mat-icon></div>
+        <div class="flex center"><span>Equipos</span></div>
+      </div>
+    </div>
+
+    <!-- <div class="flex spc-btw button-grp">
       <button type="button" mat-raised-button color="primary" [disabled]="!isUserLogged" (click)="logout()"> Cerrar Sesión </button>
       <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/login"> LOGIN </a>
       <a type="button" mat-raised-button color="primary" [disabled]="isUserLogged" routerLink="/auth/register"> REGISTER </a>
     </div>
-    <a type="button" mat-raised-button color="primary" [disabled]="!isUserLogged" routerLink="/champions"> VER CAMPEONES </a>
+    <a type="button" mat-raised-button color="primary" [disabled]="!isUserLogged" routerLink="/champions"> VER CAMPEONES </a> -->
 </div>
