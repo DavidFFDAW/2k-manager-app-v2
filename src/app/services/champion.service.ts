@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NetworkService } from './network.service';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable, of } from 'rxjs';
 import { AppSettings } from '../app.settings';
+import { SnackBarService } from './snack.bar.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,26 @@ export class ChampionService {
 
   constructor(
     private readonly networkService: NetworkService,
+    private snack: SnackBarService,
     private http: HttpClient
   ) { 
-    this.registerToEvents(this.networkService);
-    
+    this.registerToEvents(this.networkService);    
   }
 
   public getChampions(): Observable<any> {
     return this.http.get(AppSettings.API_ENDPOINT_CHAMPIONS);
+  }
+
+  public getCustomWrestlerReigns(wrestlerID: number): Observable<any> {
+    return this.http.get(AppSettings.getEndpointForWrestlerReigns(wrestlerID))
+  }
+
+  public getCustomWrestlerChampionshipReigns(wrestlerID: number, championshipID: number): Observable<any> {
+    return this.http.get(AppSettings.getEndpointForChamopionshipWrestlerReigns(championshipID, wrestlerID));
+  }
+
+  public getCustomChampionshipReigns(championshipID: number): Observable<any> {
+    return this.http.get(AppSettings.getEndpointForChampionshipReigns(championshipID));
   }
 
   public addChampion(champion: string): void {

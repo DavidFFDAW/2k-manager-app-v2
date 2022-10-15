@@ -19,7 +19,7 @@ export class AppComponent {
   ) { 
     this.isAuthenticated = this.auth.isLoggedIn();
     this.preferredTheme = window.matchMedia('(prefers-color-scheme: dark)');
-    this.autoUpdateTheme();
+    // this.autoUpdateTheme();
   }
   
   hasDarkTheme() { 
