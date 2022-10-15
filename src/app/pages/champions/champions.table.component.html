@@ -25,7 +25,7 @@
         <!-- Weight Column -->
         <ng-container matColumnDef="name">
           <th mat-header-cell *matHeaderCellDef> NAME </th>
-          <td mat-cell *matCellDef="let element"> {{ element.wrestlerName }} </td>
+          <td mat-cell *matCellDef="let element" routerLink="/champions/wrestler/{{ element.wrestlerId }}"> {{ element.wrestlerName }} </td>
         </ng-container>
 
         <!-- Weight Column -->
@@ -41,11 +41,11 @@
                 <mat-icon>more_vert</mat-icon>
               </button>
               <mat-menu #menu="matMenu">
-                <button mat-menu-item *ngIf="element.totalReigns > 1" class="success" routerLink="/champions/championship/{{element.championshipId}}/wrestler/{{element.wrestlerId}}">
+                <button mat-menu-item *ngIf="element.totalReigns > 1" class="success" routerLink="/champions/wrestler/{{ element.wrestlerId }}/championship/{{ element.championshipId }}">
                   <mat-icon>visibility</mat-icon>
                   <span>Desglosar reinados para {{ element.wrestlerName }}</span>
                 </button>
-                <button mat-menu-item routerLink="/champions/from/championship/{{element.championshipId}}">
+                <button mat-menu-item routerLink="/champions/championship/{{ element.championshipId }}">
                   <mat-icon>military_tech</mat-icon>
                   <span>{{ element.championship }}</span>
                 </button>

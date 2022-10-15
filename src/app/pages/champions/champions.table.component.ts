@@ -34,7 +34,7 @@ export class ChampionsTableComponent implements OnInit {
       error: (err) => {
         this.snackBar.showSnackBar('Ha ocurrido un error: ' + err.message);
       }
-    });
+    })  ;
   }
 
 }
